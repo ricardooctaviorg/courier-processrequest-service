@@ -1,0 +1,17 @@
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\controller\ICourierProcessRequestController.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\repository\invokers\ICreateCourierRequestInvoker.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\beans\CustomerBasics.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\service\IDicDiccionariosService.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\CourierProcessrequestServiceApplication.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\service\DicDiccionariosServiceImpl.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\service\ICreateCourierRequestInvoker.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\repository\invokers\CreateCourierRequestInvoker.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\repository\cfgDao\IDicDiccionarios.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\beans\CustomerLocation.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\controller\CourierProcessRequestController.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\beans\ProductDetail.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\domain\cfg\TblRegistrosDiccionarios.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\domain\cfg\DicDiccionarios.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\beans\CourierProcessRequest.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\beans\CourierProcessResponse.java
+C:\Users\iscgi\OneDrive\Documentos\GIT Lucy\courier-processrequest-service\src\main\java\com\a4sys\courier\service\CourierProcessRequestService.java
