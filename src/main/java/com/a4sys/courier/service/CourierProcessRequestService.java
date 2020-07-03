@@ -14,14 +14,18 @@ public class CourierProcessRequestService implements ICreateCourierRequestInvoke
 	
 	@Autowired
 	private com.a4sys.courier.repository.invokers.ICreateCourierRequestInvoker iCreateCourierRequestInvoker;
-
+	
 	@Override
 	public CourierProcessResponse createCourierRequest(CourierProcessRequest courierProcessRequest) {
 		CourierProcessResponse response;
 		Gson gson = new Gson();
+		
+		Long validateToken = iCreateCourierRequestInvoker.validateToken(courierProcessRequest.getToken());
+		
 		String courierProcessRequestString = gson.toJson(courierProcessRequest);
 		String createCourierRequest = iCreateCourierRequestInvoker.createCourierRequest(courierProcessRequestString);
 		response = gson.fromJson(createCourierRequest, CourierProcessResponse.class);
+		
 		return response;
 	}
 

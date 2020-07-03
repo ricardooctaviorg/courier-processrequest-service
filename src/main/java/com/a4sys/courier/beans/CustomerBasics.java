@@ -2,7 +2,6 @@ package com.a4sys.courier.beans;
 
 public class CustomerBasics {
 	
-	private String idExternal;
 	private String names;
 	private String lastName;
 	private String maternalLastName;
@@ -10,12 +9,6 @@ public class CustomerBasics {
 
 	public CustomerBasics() {
 		super();
-	}
-	public String getIdExternal() {
-		return idExternal;
-	}
-	public void setIdExternal(String idExternal) {
-		this.idExternal = idExternal;
 	}
 	public String getNames() {
 		return names;

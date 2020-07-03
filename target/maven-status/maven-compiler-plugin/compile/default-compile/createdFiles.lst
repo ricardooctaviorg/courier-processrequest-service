@@ -1,8 +1,10 @@
 com\a4sys\courier\beans\CourierProcessRequest.class
+com\a4sys\courier\beans\InfoToken.class
 com\a4sys\courier\domain\cfg\TblRegistrosDiccionarios.class
 com\a4sys\courier\repository\cfgDao\IDicDiccionarios.class
 com\a4sys\courier\beans\CustomerLocation.class
 com\a4sys\courier\controller\ICourierProcessRequestController.class
+com\a4sys\courier\repository\cfgDao\ITblRegistrosDiccionarios.class
 com\a4sys\courier\beans\ProductDetail.class
 com\a4sys\courier\service\CourierProcessRequestService.class
 com\a4sys\courier\repository\invokers\CreateCourierRequestInvoker.class

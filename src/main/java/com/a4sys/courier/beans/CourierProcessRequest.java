@@ -1,11 +1,29 @@
 package com.a4sys.courier.beans;
 
 public class CourierProcessRequest {
-	
-	private String 				token;
-	private CustomerBasics 		customerBasics;
-	private CustomerLocation	customerLocation;
-	private ProductDetail		productDetail;
+
+	private String token;
+	private String idRequest;
+	private String idCampaign;
+	private CustomerBasics customerBasics;
+	private CustomerLocation customerLocation;
+	private ProductDetail productDetail;
+
+	public String getIdRequest() {
+		return idRequest;
+	}
+
+	public void setIdRequest(String idRequest) {
+		this.idRequest = idRequest;
+	}
+
+	public String getIdCampaign() {
+		return idCampaign;
+	}
+
+	public void setIdCampaign(String idCampaign) {
+		this.idCampaign = idCampaign;
+	}
 
 	public CourierProcessRequest() {
 	}
