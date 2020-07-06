@@ -25,7 +25,6 @@ public class CourierProcessRequestController implements ICourierProcessRequestCo
 	private IDicDiccionariosService iDicDiccionariosService;
 	@Autowired
 	private ICreateCourierRequestInvoker iCreateCourierRequestInvoker;
-	//a las interfaces
 
 	public CourierProcessRequestController() {
 	}
@@ -34,13 +33,6 @@ public class CourierProcessRequestController implements ICourierProcessRequestCo
 	@RequestMapping(value = "/courierProcessRequest", method = RequestMethod.POST)
 	public CourierProcessResponse courierProcessRequest(@RequestBody CourierProcessRequest courierProcessRequest){
 		CourierProcessResponse courierProcessResponse = iCreateCourierRequestInvoker.createCourierRequest(courierProcessRequest);
-		List<DicDiccionarios> all = iDicDiccionariosService.getAll();
-		Long numero=9L;
-		DicDiccionarios dicDiccionarios= iDicDiccionariosService.getDicDiccionarioById(numero);
-		System.out.println("diccionario: "+dicDiccionarios.getDiccionario());
-		dicDiccionarios.getDiccionario();
-		
-		//id 9
 		return courierProcessResponse;
 	}
 }

@@ -14,19 +14,35 @@ public class CourierProcessRequestService implements ICreateCourierRequestInvoke
 	
 	@Autowired
 	private com.a4sys.courier.repository.invokers.ICreateCourierRequestInvoker iCreateCourierRequestInvoker;
+
 	
 	@Override
 	public CourierProcessResponse createCourierRequest(CourierProcessRequest courierProcessRequest) {
-		CourierProcessResponse response;
+		CourierProcessResponse response=null;
 		Gson gson = new Gson();
 		
 		Long validateToken = iCreateCourierRequestInvoker.validateToken(courierProcessRequest.getToken());
-		
-		String courierProcessRequestString = gson.toJson(courierProcessRequest);
-		String createCourierRequest = iCreateCourierRequestInvoker.createCourierRequest(courierProcessRequestString);
-		response = gson.fromJson(createCourierRequest, CourierProcessResponse.class);
-		
+		if(validateToken==100) {
+			//response= buildResponse(null,100, "EJECUCION EXITOSA");
+			String courierProcessRequestString = gson.toJson(courierProcessRequest);
+			String createCourierRequest = iCreateCourierRequestInvoker.createCourierRequest(courierProcessRequestString);
+			response = gson.fromJson(createCourierRequest, CourierProcessResponse.class);
+		}else if(validateToken==200){
+			response= buildResponse(null,CODE_200, INVALID_TOKEN);
+		}else if(validateToken==300){
+			response= buildResponse(null,CODE_300, EXPIRED_TOKEN);
+		}else{
+			response= buildResponse(null,CODE_800, INVALID_TOKEN);
+		}
 		return response;
+	}//fin de createCourierRequest
+	
+
+	private CourierProcessResponse buildResponse(Long 	folio, Integer responseCode,String 	responseDetail) {
+		CourierProcessResponse courierProcessResponse= new CourierProcessResponse(folio,responseCode,responseDetail);
+		return courierProcessResponse;
 	}
+
+	
 
 }

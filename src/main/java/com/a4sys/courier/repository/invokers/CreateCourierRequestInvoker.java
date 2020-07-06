@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.a4sys.courier.domain.cfg.TblRegistrosDiccionarios;
+import com.a4sys.courier.service.IDicCampanasService;
 import com.a4sys.courier.service.IDicDiccionariosService;
 import com.google.gson.Gson;
 
@@ -41,6 +42,8 @@ public class CreateCourierRequestInvoker implements ICreateCourierRequestInvoker
     private EntityManager em;
 	@Autowired
 	private IDicDiccionariosService iDicDiccionariosService;
+	@Autowired
+	private IDicCampanasService iDicCampanasService;
 	
 	public String createCourierRequest(String courierProcessRequest) {
 		final String  response;
@@ -57,34 +60,33 @@ public class CreateCourierRequestInvoker implements ICreateCourierRequestInvoker
 		
     	try {
 			String decryptToken = decryptToken(token);
-			System.out.println("decryptToken:"+decryptToken);
+			//System.out.println("decryptToken:"+decryptToken);
 			String tokenCurrent = new String(decryptToken.getBytes(),UTF_8);
 			
 			byte[] decodeBase64 = Base64.decodeBase64(tokenCurrent.getBytes());
 			String decodedString = new String(decodeBase64);
-			System.out.println("decodedString:"+decodedString);
+			//System.out.println("decodedString:"+decodedString);
 			
 			String[] split = decodedString.split(Pattern.quote("."));
 			String prefix = new String(Base64.decodeBase64(new String(split[0].getBytes(),UTF_8).getBytes()));
 			String info = new String(Base64.decodeBase64(new String(split[1].getBytes(),UTF_8).getBytes()));
 			com.a4sys.courier.beans.InfoToken infoToken = new Gson().fromJson(info, com.a4sys.courier.beans.InfoToken.class);
 			System.out.println("prefix:"+prefix+", info:"+info);
-			/*
-			String existCampaign= getExistCampaign(infoToken.getIdExternal());
-			System.out.println("prefix:"+prefix+", info:"+info+",existCampaign:"+existCampaign);
-			*/
-	/*
-			//System.out.println("info token date: "+infoToken.getCurrentDate()+", strDate:"+strDate);
-			if(infoToken.getExpiration().equals(NEVER)) {
-				if( PREFIX_CALLCENTER.equals(prefix)&&existCampaign.equals(ONE)) {
-					return new Long(100);
+		
+			int countgetIdExternalById= iDicCampanasService.getIdExternalById(infoToken.getIdExternal());
+			System.out.println("info id external: "+countgetIdExternalById);
+	
+			if(infoToken.getExpiration().equals(NEVER)&&countgetIdExternalById==1) {
+				if( PREFIX_CALLCENTER.equals(prefix)) {
+					return new Long(100);//token exitoso
 				}
 			}else {
 				return new Long(300);//tokeExpirado
 			}
-			*/
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			return new Long(800);//Error interno
 		}
     	return new Long(200);//token invalido
 	}
@@ -95,19 +97,9 @@ public class CreateCourierRequestInvoker implements ICreateCourierRequestInvoker
 	
     private byte[] getKeySecret(){
     	String response = "";
-    	/*
-        ALQueryResult resultQuery = new ALQueryResult();
-        try {
-        	resultQuery = sqlQueryExecutor.executeQueryUsingQueryString(QuerysDB.COURIER_VISITMANAGEMENT_GET_KEYTOKEN);
-        	response =  (String) resultQuery.get(0, HEADER_KEYTOKEN).toString();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    	return response.getBytes();
-    	*/
     	Long idTblRegistrosDiccionarios=8L;
     	TblRegistrosDiccionarios tblRegistrosDiccionarios= iDicDiccionariosService.getTblRegistrosDiccionariosById(idTblRegistrosDiccionarios);
-    	//tblRegistrosDiccionarios.getValor().getBytes();
+    
     	String responsetblRegistrosDiccionarios= tblRegistrosDiccionarios.getValor().toString();
     	System.out.println("tblRegistros valor: "+responsetblRegistrosDiccionarios);
     	return responsetblRegistrosDiccionarios.getBytes();

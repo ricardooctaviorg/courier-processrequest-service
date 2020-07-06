@@ -9,6 +9,13 @@ public class CourierProcessResponse {
 	public CourierProcessResponse() {
 	}
 
+	public CourierProcessResponse(Long folio, Integer responseCode, String responseDetail) {
+		super();
+		this.folio = folio;
+		this.responseCode = responseCode;
+		this.responseDetail = responseDetail;
+	}
+
 	public Long getFolio() {
 		return folio;
 	}
