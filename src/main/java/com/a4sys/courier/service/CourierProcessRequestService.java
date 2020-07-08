@@ -13,6 +13,8 @@ import com.google.gson.Gson;
 public class CourierProcessRequestService implements ICreateCourierRequestInvoker {
 	
 	@Autowired
+	private com.a4sys.courier.repository.invokers.IValidateTokenInvoker iValidateTokenInvoker;
+	@Autowired
 	private com.a4sys.courier.repository.invokers.ICreateCourierRequestInvoker iCreateCourierRequestInvoker;
 
 	
@@ -21,7 +23,7 @@ public class CourierProcessRequestService implements ICreateCourierRequestInvoke
 		CourierProcessResponse response=null;
 		Gson gson = new Gson();
 		
-		Long validateToken = iCreateCourierRequestInvoker.validateToken(courierProcessRequest.getToken());
+		Long validateToken = iValidateTokenInvoker.validateToken(courierProcessRequest.getToken());
 		if(validateToken==100) {
 			//response= buildResponse(null,100, "EJECUCION EXITOSA");
 			String courierProcessRequestString = gson.toJson(courierProcessRequest);
@@ -32,7 +34,7 @@ public class CourierProcessRequestService implements ICreateCourierRequestInvoke
 		}else if(validateToken==300){
 			response= buildResponse(null,CODE_300, EXPIRED_TOKEN);
 		}else{
-			response= buildResponse(null,CODE_800, INVALID_TOKEN);
+			response= buildResponse(null,CODE_200, INVALID_TOKEN);
 		}
 		return response;
 	}//fin de createCourierRequest

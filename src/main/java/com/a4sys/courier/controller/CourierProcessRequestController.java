@@ -1,7 +1,5 @@
 package com.a4sys.courier.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.a4sys.courier.beans.CourierProcessRequest;
 import com.a4sys.courier.beans.CourierProcessResponse;
-import com.a4sys.courier.domain.cfg.DicDiccionarios;
 import com.a4sys.courier.service.ICreateCourierRequestInvoker;
 import com.a4sys.courier.service.IDicDiccionariosService;
 import org.apache.log4j.Logger;
@@ -32,7 +29,7 @@ public class CourierProcessRequestController implements ICourierProcessRequestCo
 	@PostMapping
 	@RequestMapping(value = "/courierProcessRequest", method = RequestMethod.POST)
 	public CourierProcessResponse courierProcessRequest(@RequestBody CourierProcessRequest courierProcessRequest){
-		runMe("Log de prueba");
+		//runMe("Log de prueba");
 		CourierProcessResponse courierProcessResponse = iCreateCourierRequestInvoker.createCourierRequest(courierProcessRequest);
 		return courierProcessResponse;
 	}
@@ -40,7 +37,7 @@ public class CourierProcessRequestController implements ICourierProcessRequestCo
 	private void runMe(String parameter){
 
 		if(logger.isDebugEnabled()){
-			logger.debug("This is debug : " + parameter);
+			logger.debug("This is debug enabled : " + parameter);
 		}
 
 		if(logger.isInfoEnabled()){
