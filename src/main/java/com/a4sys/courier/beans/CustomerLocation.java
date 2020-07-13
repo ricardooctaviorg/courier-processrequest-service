@@ -3,8 +3,8 @@ package com.a4sys.courier.beans;
 public class CustomerLocation {
 	
 	private String 	street;
-	private Integer externalNumnber;
-	private Integer	internalNumber;
+	private String 	externalNumber;
+	private String	internalNumber;
 	private String 	district;
 	private String 	postalCode;
 	private String 	city;
@@ -19,16 +19,16 @@ public class CustomerLocation {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-	public Integer getExternalNumnber() {
-		return externalNumnber;
+	public String getExternalNumber() {
+		return externalNumber;
 	}
-	public void setExternalNumnber(Integer externalNumnber) {
-		this.externalNumnber = externalNumnber;
+	public void setExternalNumber(String externalNumber) {
+		this.externalNumber = externalNumber;
 	}
-	public Integer getInternalNumber() {
+	public String getInternalNumber() {
 		return internalNumber;
 	}
-	public void setInternalNumber(Integer internalNumber) {
+	public void setInternalNumber(String internalNumber) {
 		this.internalNumber = internalNumber;
 	}
 	public String getDistrict() {

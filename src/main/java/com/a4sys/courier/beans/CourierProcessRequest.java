@@ -1,4 +1,4 @@
-package com.a4sys.courier.beans;
+ package com.a4sys.courier.beans;
 
 public class CourierProcessRequest {
 
